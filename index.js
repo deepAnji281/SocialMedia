@@ -2,6 +2,8 @@ const express=require('express');
 const app=express();
 const port=7000
 const expressLayouts=require('express-ejs-layouts');
+//linking of mongodb;
+const db=require('./configure/mongoose');
 // use of layouts
 app.use(expressLayouts);
 
