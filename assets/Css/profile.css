@@ -1,6 +1,17 @@
+body{
+    margin:0;
+    padding:0;
+    background-color: orchid;
+}
 .header1{
     color:greenyellow;
     font-style: italic;
     font-size: 90px;
     
+}
+p{
+    text-align: center;
+    color:crimson;
+    font-style: italic;
+    font-size: 40px;
 }
