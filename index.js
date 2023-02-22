@@ -9,10 +9,15 @@ const cookieParser=require('cookie-parser');
 //require the express-session to use sessional key
 const session=require('express-session');
 // require passport to authenticate the user
+// connecting to connect-mongo@3
+const MongoStore=require('connect-mongo')(session);
 const passport=require('passport');
 const passportLocal=require('./configure/passport-local-strategey');
 // use of layouts
 app.use(expressLayouts);
+// user is logout when we restrat the server for that we use mongodb
+
+
 // use of static file
 app.use(express.static('./assets'));
 app.use(express.urlencoded());
@@ -36,7 +41,14 @@ app.use(session({
   resave:false,
   cookie:{
     maxAge:100*60*100
-  }
+  },
+  store:new MongoStore({
+    mongooseConnection:db,
+    autoRemove:'disabled',
+
+  },(err)=>{
+    console.log(err|| 'connected to mongodb setup');
+  })
 }))
 app.use(passport.initialize());
 app.use(passport.session());

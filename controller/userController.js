@@ -6,7 +6,7 @@ module.exports.profile=function(req,res)
 // rendering the signUp page
 module.exports.signUp=function(req,res)
 {   // this is used to authenticate the user
-    if(req.isAuthenicated())
+    if(req.isAuthenticated())
     {
         return res.redirect('/user/profile');
     }
@@ -56,4 +56,5 @@ module.exports.createSession=function(req,res)
    // to do latter
    return res.redirect('/')
 }
+
 
