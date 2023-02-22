@@ -7,5 +7,5 @@ router.get('/user/sign-up',usercont.signUp);
 router.get('/user/sign-in',usercont.signIn);
 router.post('/user/create',usercont.create);
 router.post('/user/creatSession',passport.authenticate('local',{failureRedirect:'/user/sign-in'}),usercont.createSession);
-
+router.get('/user/sign-out',usercont.destroy);
 module.exports=router;
