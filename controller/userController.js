@@ -1,7 +1,22 @@
 const User=require('../modals/user');
 module.exports.profile=function(req,res)
 {
-    return res.render('profile',{title:'user-profile'});
+    if(req.cookies.user_id)
+    {
+           User.findById(req.cookies.user_id,(err,user)=>{
+            if(err)
+            return;
+            if(user)
+            {
+                return res.render('profile',{title:'user-profile',user:user});
+            }
+            else
+            return res.redirect('/user/sign-in');
+           })
+    }
+    else{
+        return res.redirect('/user/sign-in');
+    }
 }
 // rendering the signUp page
 module.exports.signUp=function(req,res)
@@ -47,5 +62,23 @@ module.exports.create=function(req,res){
 module.exports.createSession=function(req,res)
 {
    // to do latter
+   // find the user
+
+   // user found
+   User.findOne({email:req.body.email},(err,user)=>{
+    if(err)
+    return;
+    if(user)
+    {
+        if(user.password!=req.body.password)
+        return res.redirect('back');
+        // handle create session
+        res.cookie('user_id',user.id);
+        return res.redirect('/user/profile');
+    }
+    else{
+        return res.redirect('back');
+    }
+   })
 }
 

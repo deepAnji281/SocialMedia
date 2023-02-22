@@ -11,7 +11,8 @@ body{
 }
 p{
     text-align: center;
-    color:crimson;
     font-style: italic;
     font-size: 40px;
+    text-decoration: underline;
+    border-radius: 7px;
 }
