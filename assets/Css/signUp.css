@@ -1,0 +1,28 @@
+body{
+    margin:0;
+    padding:0;
+    background-color: bisque;
+}
+.header1{
+    text-align: center;
+    color:blueviolet;
+    font-size:40px;
+    font-style: italic;
+}
+.header1:hover{
+    color:palevioletred;
+}
+#sign_up{
+
+    background-color: lightblue;
+    margin-left:20rem;
+    height: 4rem;
+    width:800px;
+    border:2px solid black;
+    border-radius: 7px;
+}
+input{
+    margin-top:20px;
+    border: 1px solid black;
+    border-radius: 5px;
+}

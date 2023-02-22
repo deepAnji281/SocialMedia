@@ -1,6 +1,18 @@
+body{
+    margin:0;
+    padding:0;
+    background-color: orchid;
+}
 .header1{
     color:greenyellow;
     font-style: italic;
     font-size: 90px;
     
+}
+p{
+    text-align: center;
+    font-style: italic;
+    font-size: 40px;
+    text-decoration: underline;
+    border-radius: 7px;
 }
