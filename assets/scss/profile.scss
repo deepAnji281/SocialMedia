@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: bisque;
+    .header1{
+        color:purple;
+        font-size: 40px;
+        font-style: italic;
+    }
+    .header1:hover{
+        color:chartreuse;
+    }
+    p{
+        color:red;
+        font-size:40px;
+        font-style: italic;
+        text-decoration: underline;
+    }
+    p:hover{
+        color:blueviolet;
+    }
+    
+}

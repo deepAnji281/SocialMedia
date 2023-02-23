@@ -1,17 +1,26 @@
-body{
-    margin:0;
-    padding:0;
-    background-color: orchid;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: bisque;
 }
-.header1{
-    color:greenyellow;
-    font-style: italic;
-    font-size: 90px;
-    
+
+body .header1 {
+  color: purple;
+  font-size: 40px;
+  font-style: italic;
 }
-p{
-    text-align: center;
-    color:crimson;
-    font-style: italic;
-    font-size: 40px;
+
+body .header1:hover {
+  color: chartreuse;
+}
+
+body p {
+  color: red;
+  font-size: 40px;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+body p:hover {
+  color: blueviolet;
 }

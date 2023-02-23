@@ -13,8 +13,17 @@ const session=require('express-session');
 const MongoStore=require('connect-mongo')(session);
 const passport=require('passport');
 const passportLocal=require('./configure/passport-local-strategey');
+const sassMiddleWare=require('node-sass-middleware');
+app.use(sassMiddleWare({
+  src:'./assets/scss',
+  dest:'./assets/Css',
+  debug:true,
+  outputStyle:'expanded',
+  prefix:'/Css'
+}))
 // use of layouts
 app.use(expressLayouts);
+
 // user is logout when we restrat the server for that we use mongodb
 
 
