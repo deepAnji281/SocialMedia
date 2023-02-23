@@ -1,2 +1,16 @@
 <link rel="stylesheet" href="/Css/home.css">
 <h1 class="header1">codial/homePage</h1>
+<section id="new-post">
+    <form action="/post/create" id="new-feed" method="post">
+        <textarea name="content" id="new-content" cols="30" rows="3" placeholder="Type Here...."></textarea>
+         <input type="submit" value="Post">
+    </form>
+</section>
+<ul>
+    <%for(post of posts){%>
+
+        <li><%=post.content%></li>
+        <li><%=post.user.name%></li>
+        <br>
+    <%}%>
+</ul>

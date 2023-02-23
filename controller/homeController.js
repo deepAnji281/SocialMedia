@@ -1,6 +1,18 @@
+const Post=require('../modals/Post');
 module.exports.home=function(req,res)
-{     console.log(req.cookies);
-    res.cookie('user_id',25);
+{     
+   // find all the post to which is posted by the user
+    // Post.find({},function(err,post){
+    //     if(err)
+    //     return;
+    //     return res.render('home',{title:'codial | home',posts:post});
+    // })
 
-    return res.render('home',{title:'homePage'});
+
+    // to poputlate the user
+    Post.find({}).populate('user').exec(function(err,post){
+        if(err)
+        return;
+        return res.render('home',{title:'codial|Home',posts:post});
+    })
 }
