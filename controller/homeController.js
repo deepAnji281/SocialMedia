@@ -10,7 +10,9 @@ module.exports.home=function(req,res)
 
 
     // to poputlate the user
-    Post.find({}).populate('user').exec(function(err,post){
+    Post.find({}).populate('user').populate({path:'comments',populate:{
+        path:'user'
+    }}).exec(function(err,post){
         if(err)
         return;
         return res.render('home',{title:'codial|Home',posts:post});

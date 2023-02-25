@@ -18,3 +18,30 @@
   color: purple;
   font-weight: bolder;
 }
+
+.details-post {
+  height: 180px;
+  width: 380px;
+  border: 1px solid red;
+  margin-left: 30rem;
+  position: relative;
+}
+
+.details-post li {
+  color: crimson;
+  font-style: italic;
+  font-size: 25px;
+  list-style: none;
+}
+
+.details-post li:hover {
+  color: greenyellow;
+}
+
+.details-post input {
+  font-style: italic;
+  color: blue;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: pink;
+}
