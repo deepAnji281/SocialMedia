@@ -1,4 +1,5 @@
 const Post=require('../modals/Post');
+const User=require('../modals/user')
 module.exports.home=function(req,res)
 {     
    // find all the post to which is posted by the user
@@ -15,6 +16,8 @@ module.exports.home=function(req,res)
     }}).exec(function(err,post){
         if(err)
         return;
-        return res.render('home',{title:'codial|Home',posts:post});
+       User.find({},function(err,users){
+        return res.render('home',{title:'codial|Home',posts:post,All_user:users});
+       })
     })
 }

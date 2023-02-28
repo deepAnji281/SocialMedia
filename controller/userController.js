@@ -1,7 +1,22 @@
 const User=require('../modals/user');
 module.exports.profile=function(req,res)
 {
-    return res.render('profile',{title:'user-profile'});
+   User.findById(req.params.id,function(err,user){
+    if(err)
+    return;
+    return res.render('profile',{title:'user_profile',profile_user:user});
+   })
+}
+module.exports.update=function(req,res){
+    if(req.user.id==req.params.id)
+    {
+        User.findByIdAndUpdate(req.params.id,{name:req.body.name,email:req.body.email},function(err,user){
+            return res.redirect('back')
+        })
+    }
+    else{
+        return res.status(401).send('Unauthorized');
+    }
 }
 // rendering the signUp page
 module.exports.signUp=function(req,res)

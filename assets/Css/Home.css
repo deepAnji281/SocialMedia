@@ -20,11 +20,12 @@
 }
 
 .details-post {
-  height: 180px;
+  height: auto;
   width: 380px;
   border: 1px solid red;
   margin-left: 30rem;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .details-post li {

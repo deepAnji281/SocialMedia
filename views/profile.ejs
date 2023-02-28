@@ -1,4 +1,17 @@
 <link rel="stylesheet" href="/Css/profile.css">
 <h1 class="header1">codial/<%=title%></h1>
-<p><%=user.name%></p>
-<p><%=user.email%></p>
+
+<% if(user.id==profile_user.id){%>
+    <!-- if this matches then do it -->
+    <form action="/user/profile/update/<%=profile_user.id%>" method="post">
+        <input type="text" name="name" value="<%=profile_user.name%>" required>
+        <input type="email" name="email" value="<%=profile_user.email%>" required>
+        <input type="submit" value="update">
+     
+    </form>
+
+  
+
+<%}%>
+    <p><%=profile_user.name%></p>
+    <p><%=profile_user.email%></p>
