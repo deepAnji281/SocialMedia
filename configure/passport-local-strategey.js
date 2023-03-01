@@ -5,15 +5,16 @@ const User=require('../modals/user');
 //Authentication using passport js
 
 passport.use(new LocalStrategey({
-    usernameField:'email'
-},function(email,password,done){
+    usernameField:'email',
+    passReqToCallback:true
+},function(req,email,password,done){
     User.findOne({email:email},(err,user)=>{
         if(err)
-        {
+        {   req.flash('error',"error in passport js");
             return done(err);
         }
         if(!user||user.password!=password)
-        {
+        {  req.flash('error','Invalid username/password');
             return done(null,false);
         }
 

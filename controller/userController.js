@@ -1,21 +1,28 @@
 const User=require('../modals/user');
-module.exports.profile=function(req,res)
+module.exports.profile=async function(req,res)
 {
-   User.findById(req.params.id,function(err,user){
-    if(err)
+   try{
+    let user=await User.findById(req.params.id);
+   return res.render('profile',{title:'user_profile',profile_user:user});
+   }catch(err)
+   {
+    console.log(err);
     return;
-    return res.render('profile',{title:'user_profile',profile_user:user});
-   })
+   }
 }
-module.exports.update=function(req,res){
-    if(req.user.id==req.params.id)
+module.exports.update=async function(req,res){
+    try{
+        if(req.user.id==req.params.id)
     {
-        User.findByIdAndUpdate(req.params.id,{name:req.body.name,email:req.body.email},function(err,user){
-            return res.redirect('back')
-        })
+        await User.findByIdAndUpdate(req.params.id,{name:req.body.name,email:req.body.email});
+        return res.redirect('back');
     }
     else{
         return res.status(401).send('Unauthorized');
+    }
+    }catch(err){
+        console.log(err);
+        return;
     }
 }
 // rendering the signUp page
@@ -68,7 +75,9 @@ module.exports.create=function(req,res){
 
 module.exports.createSession=function(req,res)
 {
-   // to do latter
+   req.flash('Success',"Logged in Succesfully");
+
+
    return res.redirect('/')
 }
 module.exports.destroy=function(req,res,next){
@@ -77,8 +86,10 @@ module.exports.destroy=function(req,res,next){
         {
             return next();
         }
+        req.flash('Success','you have Logged out!')
         return res.redirect('/');
     })
+    
 }
 
 

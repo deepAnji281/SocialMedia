@@ -1,6 +1,7 @@
 const Post=require('../modals/Post');
+const { populate } = require('../modals/user');
 const User=require('../modals/user')
-module.exports.home=function(req,res)
+module.exports.home= async function(req,res)
 {     
    // find all the post to which is posted by the user
     // Post.find({},function(err,post){
@@ -11,13 +12,17 @@ module.exports.home=function(req,res)
 
 
     // to poputlate the user
-    Post.find({}).populate('user').populate({path:'comments',populate:{
-        path:'user'
-    }}).exec(function(err,post){
-        if(err)
+    try{  
+        let post=await Post.find({})
+        .populate('user')
+        .populate({path:'comments',populate:{path:'user'}});
+
+       
+        let users= await User.find({});
+        return res.render('home',{title:'codialHome',posts:post,All_user:users});
+    }
+    catch(err){
+        console.log('error in populating the thing',err);
         return;
-       User.find({},function(err,users){
-        return res.render('home',{title:'codial|Home',posts:post,All_user:users});
-       })
-    })
+    }
 }

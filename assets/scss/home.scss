@@ -1,51 +1,61 @@
-#new-post{
-    height:200px;
-    width:400px;
-    margin-left: 28rem;
-    #new-content{
-        background-color: wheat;
-        color:red;
-        font-style: italic;
-        font-size:20px;
-        border-radius: 7px;
+
+    #new-post{
+        height:200px;
+        width:400px;
+        display: flex;
+        gap:40rem;
+        #new-content{
+            background-color: wheat;
+            color:red;
+            font-style: italic;
+            font-size:20px;
+            border-radius: 7px;
+            
+            
+        }
+        #friend-circle{
+            height: 800px;
+            width:450px;
+            border:2px solid blue;
+        }
+        input{
+            background-color: crimson;
+            border-radius: 5px;
+            color:purple;
+            font-weight: bolder;
+        }
         
-        
-    }
-    input{
-        background-color: crimson;
-        border-radius: 5px;
-        color:purple;
-        font-weight: bolder;
     }
     
-}
-
-.details-post{
-    height:auto;
-    width:380px;
-    border:1px solid red;
-    margin-left: 30rem;
-    display:flex;
-    flex-direction: column;
-
-    li{
-        color:crimson;
-        font-style:italic;
-        font-size:25px;
-        list-style: none;
-    }
-    li:hover{
-        color:greenyellow;
-    }
-    input{
-        font-style: italic;
-        color:blue;
-        border:2px solid black;
-        border-radius: 5px;
-        background-color: pink;
-    }
+    .details-post{
+        height:auto;
+        width:380px;
+        border:1px solid red;
+        margin-left: 30rem;
+        display:flex;
+        flex-direction: column;
     
-}
+        li{
+            color:crimson;
+            font-style:italic;
+            font-size:25px;
+            list-style: none;
+        }
+        li:hover{
+            color:greenyellow;
+        }
+        input{
+            font-style: italic;
+            color:blue;
+            border:2px solid black;
+            border-radius: 5px;
+            background-color: pink;
+        }
+        
+    }
+
+
+
 
 
 

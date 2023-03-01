@@ -1,36 +1,46 @@
 const Post=require('../modals/Post');
 const comment=require('../modals/comment');
-module.exports.createPost=function(req,res)
+module.exports.createPost= async function(req,res)
 {
-    Post.create({
+  try{
+    await Post.create({
         content:req.body.content,
         user:req.user._id,
-    },(err,post)=>{
-        if(err)
-        {
-            console.log('err in creating trhe post');
-            return;
-        }
-        return res.redirect('back');
-    })
+        
+    });
+    req.flash('Success','post published');
+   
+    return res.redirect('back');
+  }catch(err)
+  {
+    console.log(err);
+    return;
+  }
 }
 
 
 // deleting the post
-module.exports.destroy=function(req,res){
-    
-    Post.findById(req.params.id,function(err,post){
+module.exports.destroy= async function(req,res){
+    try{
+        let post= await Post.findById(req.params.id);
         // .id means converting the ._id in to string
         if(post.user==req.user.id)
         {
             post.remove();
-           comment.deleteMany({post:req.params.id},function(err){
+           await comment.deleteMany({post:req.params.id})
+           req.flash('Success',"Post and comment associated to it deleted");
             return res.redirect('back');
-           })
+          
+        
         }
         else{
             return res.redirect('back')
         }
-    })
+    }catch(err){
+        console.log(err);
+        return;
+    }
+   
+    
     
 }

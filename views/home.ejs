@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/Css/home.css">
 <h1 class="header1">codial/homePage</h1>
+<div id="detalis">
 <section id="new-post">
     <%if(locals.user){%>
         <form action="/post/create" id="new-feed" method="post">
@@ -7,6 +8,15 @@
              <input type="submit" value="Post">
         </form>
     <%}%>
+    <section id="friend-circle">
+        <div id="friend-list">
+            <h4>Friend-list</h4>
+            <% for(u of All_user){%>
+                <a href="/user/profile/<%= u.id%>"><%=u.name%></a><br>
+                <br>
+            <%}%>
+        </div>
+    </section>
 </section>
 <ul>
     <%for(post of posts){%>
@@ -16,11 +26,5 @@
     <%}%>
     
 </ul>
-<section>
-    <div id="friend-list">
-        <% for(u of All_user){%>
-            <a href="/user/profile/<%= u.id%>"><%=u.name%></a><br>
-            <br>
-        <%}%>
-    </div>
-</section>
+
+</div>

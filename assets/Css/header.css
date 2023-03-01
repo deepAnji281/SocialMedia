@@ -1,0 +1,12 @@
+.setting-class {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 2rem;
+  color: skyblue;
+  font-size: 30px;
+}
+
+.setting-class a {
+  color: skyblue;
+  font-size: 30px;
+}
