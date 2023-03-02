@@ -1,4 +1,6 @@
 const User=require('../modals/user');
+const fs=require('fs');
+const path=require('path');
 module.exports.profile=async function(req,res)
 {
    try{
@@ -14,8 +16,30 @@ module.exports.update=async function(req,res){
     try{
         if(req.user.id==req.params.id)
     {
-        await User.findByIdAndUpdate(req.params.id,{name:req.body.name,email:req.body.email});
+       let user= await User.findByIdAndUpdate(req.params.id);
+       User.uploadAvtar(req,res,function(err){
+        if(err)
+        {
+            console.log('******multer error',err);
+            return;
+            
+        }
+          user.name=req.body.name;
+          user.email=req.body.email;
+          if(req.file)
+          {    if(user.avtar)
+               {
+                fs.unlinkSync(path.join(__dirname,"..",user.avtar))
+               }
+            user.avtar=User.avtarPath+'/'+req.file.filename;
+          }
+          
+          user.save();
+       }
+    )
+
         return res.redirect('back');
+        
     }
     else{
         return res.status(401).send('Unauthorized');

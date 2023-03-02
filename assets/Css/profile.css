@@ -24,3 +24,7 @@ body p {
 body p:hover {
   color: blueviolet;
 }
+
+body img {
+  margin-top: 0px;
+}

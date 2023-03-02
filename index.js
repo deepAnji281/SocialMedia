@@ -26,11 +26,22 @@ app.use(sassMiddleWare({
 // use of layouts
 app.use(expressLayouts);
 
+
+
+
+
+
+
+
+
+
 // user is logout when we restrat the server for that we use mongodb
 
 
 // use of static file
 app.use(express.static('./assets'));
+
+ app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(express.urlencoded());
 // use of cookieParser
 app.use(cookieParser());
@@ -71,6 +82,7 @@ app.use('/',require('./routes'));
 app.use('/',require('./routes/user'))
 app.use('/',require('./routes/post'));
 app.use('/',require('./routes/comment'));
+
 app.listen(port,(err)=>{
     if(err)
     return

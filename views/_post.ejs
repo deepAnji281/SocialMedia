@@ -2,13 +2,13 @@
     <% if(locals.user && locals.user.id==post.user.id){%>
     <p>
         <small>
-            <a href="/post/destroy/<%=post._id%>">X</a>
+            <a href="/post/destroy/<%=post._id%>" class="delete-post-button">X</a>
         </small>
     </p>
     <%}%>
    
-    <li><%=post.content%></li>
-    <li> by <%=post.user.name%></li>
+    <li id="post-<%=post._id%>"><%=post.content%></li>
+    <li id="post-<%=post._id%>"> by <%=post.user.name%></li>
     <br>
     <div class="post-comment">
         <% if(locals.user){%>
